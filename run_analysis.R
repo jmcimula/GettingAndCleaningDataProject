@@ -25,12 +25,12 @@ varDataStd$label <- varLabels[varDataStd$label, 2]
 
 # List of column names and feature names and remove non-alphabetic character and converting to lowercase
 varCol <- c("subject", "label", varFeatStd$V2)
-varCol <- tolower(gsub("[^[:alpha:]]", "", varCol))
+#varCol <- tolower(gsub("[^[:alpha:]]", "", varCol))
 colnames(varDataStd) <- varCol
 
 # Mean from Subject and label
 varAggData <- aggregate(varDataStd[, 3:ncol(varDataStd)],by=list(subject = varDataStd$subject,label = varDataStd$label),mean)
 
-# write data in tidy2.txt
-write.table(format(varAggData, scientific=T), "tidy2.txt",row.names=F, col.names=F, quote=2)
+# write data in tidy_data.txt
+write.table(format(varAggData, scientific=T), "tidy_data.txt",row.names=F, quote=FALSE)
 
